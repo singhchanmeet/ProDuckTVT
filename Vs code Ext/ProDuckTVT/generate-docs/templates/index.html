@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" action="/explain/">
+        {% csrf_token %}
+        <textarea id="python_code" name="python_code" placeholder="Your code here"></textarea>
+        <button type="submit">SUBMIT</button>
+    </form>
+    <div id="response"></div>
+
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent the form from actually submitting
+
+            // Get the input value
+            pythonCode = document.querySelector('textarea[name="python_code"]').value;
+            const pythonCodeObject = { python_code: pythonCode };
+
+            // Stringify the value
+            const jsonCode = JSON.stringify(pythonCodeObject);
+            // console.log(jsonCode);
+
+            // Send the JSON data to the server
+            fetch('http://127.0.0.1:8000/explain/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: jsonCode,
+            })
+            .then(response => response.json()) // Assuming the server responds with JSON
+            .then(data => {
+                console.log(response)
+                // Handle the server response here
+                const responseElement = document.querySelector('#response');
+                responseElement.textContent = JSON.stringify(data, null, 2); // Display the response on the webpage
+                // responseElement.textContent = JSON.stringify(data, null, 2); // Display the response on the webpage
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        // Attach the function to the form's submit event
+        const form = document.querySelector('form');
+        form.addEventListener('submit', handleFormSubmit);
+    </script>
+</body>
+</html>
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" action="/explain/">
+        {% csrf_token %}
+        <textarea type="text" name="python_code" placeholder="Your code here">
+        <button type="submit">SUBMIT</button>
+    </form>
+</body>
+
+<script>
+function handleFormSubmit(event) {
+  event.preventDefault(); // Prevent the form from actually submitting
+
+  // Get the input value
+//   const pythonCodeInput = document.querySelector('input[name="python_code"]');
+  pythonCode = document.querySelector('textarea[name="python_code"]').value;
+  const pythonCodeObject = { python_code: pythonCode };
+//   const pythonCodeValue = pythonCodeInput.value;
+
+  // Stringify the value
+  const jsonCode = JSON.stringify(pythonCodeObject);
+//   const jsonString = JSON.stringify({ python_code: pythonCodeValue });
+
+  // You can now use the 'jsonString' variable as needed, such as sending it to the server
+  console.log(jsonCode);
+}
+
+// Attach the function to the form's submit event
+const form = document.querySelector('form');
+form.addEventListener('submit', handleFormSubmit);
+
+</script>
+</html> -->
