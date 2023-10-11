@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Add your CSS styles for the sidebar view here */
+        .sidebar {
+            padding: 10px;
+            font-family: Arial, sans-serif;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #007acc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Welcome to the Productivity Hub!</h2>
+        <p>Explore features for both Developers and Gamers.</p>
+
+        <h3>For Developers:</h3>
+        <button class="button" id="codeAutomationBtn">Code Automation</button>
+        <button class="button" id="intelligentAnalysisBtn">Intelligent Code Analysis</button>
+        <button class="button" id="workflowAutomationBtn">Workflow Automation</button>
+        <!-- Add more developer-specific buttons as needed -->
+
+        <h3>For Gamers:</h3>
+        <button class="button" id="gameDiscoveryBtn">Game Discovery</button>
+        <button class="button" id="performanceEnhancementBtn">Performance Enhancement</button>
+        <button class="button" id="socialFeaturesBtn">Social Features</button>
+        <!-- Add more gamer-specific buttons as needed -->
+    </div>
+
+    <script>
+        // Add JavaScript code here to handle button click events and perform actions
+        document.getElementById("codeAutomationBtn").addEventListener("click", function () {
+            // Implement code automation functionality
+            // Example: open a new tab for code automation features
+            vscode.commands.executeCommand('example.openCodeAutomation');
+        });
+
+        document.getElementById("intelligentAnalysisBtn").addEventListener("click", function () {
+            // Implement intelligent code analysis functionality
+            // Example: open a new tab for code analysis features
+            vscode.commands.executeCommand('example.openIntelligentAnalysis');
+        });
+
+        document.getElementById("workflowAutomationBtn").addEventListener("click", function () {
+            // Implement workflow automation functionality
+            // Example: open a new tab for workflow automation features
+            vscode.commands.executeCommand('example.openWorkflowAutomation');
+        });
+
+        document.getElementById("gameDiscoveryBtn").addEventListener("click", function () {
+            // Implement game discovery functionality
+            // Example: open a new tab for game discovery features
+            vscode.commands.executeCommand('example.openGameDiscovery');
+        });
+
+        document.getElementById("performanceEnhancementBtn").addEventListener("click", function () {
+            // Implement performance enhancement functionality
+            // Example: open a new tab for performance enhancement features
+            vscode.commands.executeCommand('example.openPerformanceEnhancement');
+        });
+
+        document.getElementById("socialFeaturesBtn").addEventListener("click", function () {
+            // Implement social features functionality
+            // Example: open a new tab for social features
+            vscode.commands.executeCommand('example.openSocialFeatures');
+        });
+    </script>
+</body>
+</html>

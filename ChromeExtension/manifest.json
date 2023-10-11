@@ -1,0 +1,72 @@
+{
+  "name": "ProDuckTVT",
+  "version": "1.0",
+  "author": "Ishaan Minocha",
+  "manifest_version": 2,
+  "description": "A versatile Chrome extension for gamers and developers.",
+  "browser_action": {
+    "default_title": "Record Your Screen, Tab or Camera",
+    "default_popup": "popup.html",
+    "default_icon": "logo.png"
+  },
+  "icons": {
+    "128": "logo.png"
+  },
+  "background": {
+    "scripts": [
+      "background/background.common.js",
+      "background/background.js",
+      "background/background.desktopCapture.js",
+      "background/background.tabCapture.js",
+      "background/background.badgeText.js",
+      "background/background.getUserMedia.js",
+      "background/background.messaging.js",
+      "background/background.players.js",
+      "RecordRTC/MediaStreamRecorder.js",
+      "RecordRTC/MultiStreamRecorder.js",
+      "RecordRTC/MultiStreamsMixer.js",
+      "RecordRTC/StereoAudioRecorder.js",
+      "RecordRTC/DiskStorage.js",
+      "RecordRTC/EBML.js"
+    ],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "background/background.contentScript.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_start"
+    }
+  ],
+  "permissions": [
+    "desktopCapture",
+    "storage",
+    "tabs",
+    "tabCapture",
+    "activeTab",
+    "<all_urls>",
+    "identity",
+    "https://www.googleapis.com/*"
+  ],
+  "oauth2": {
+    "client_id": "41556190767-99gorp1l5qij3hlsos4jms4vosbilrsa.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/youtube.upload",
+      "https://www.googleapis.com/auth/youtube"
+    ]
+  },
+  "content_security_policy": "script-src 'self' https://apis.google.com; object-src 'self'",
+  "web_accessible_resources": [
+    "images/main-icon.png"
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": false,
+    "open_in_tab": true
+  }
+}
